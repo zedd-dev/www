@@ -9,12 +9,12 @@
     <meta name="description" content="本篇依旧是短小直接干的简短操作说明。 Requirement Bash Git  脚本下载GitHub Gist - git-update.sh 使用chmod +x git-update.sh.&#x2F;git-update &lt;remote&gt; &lt;branch&gt;  作用更新当前目录下所有为Git仓库的子目录（目前不会递归遍历）。 脚本逻辑 遍历当前所有文件夹 过滤包含.git文件夹">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过Bash脚本git-pull所有workspace下的本地仓库">
-<meta property="og:url" content="https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/index.html">
-<meta property="og:site_name" content="Zed&#39;s blogs">
+<meta property="og:url" content="https://www.zedd.dev/2019/12/06/bdb865293971/index.html">
+<meta property="og:site_name" content="Zedd.dev">
 <meta property="og:description" content="本篇依旧是短小直接干的简短操作说明。 Requirement Bash Git  脚本下载GitHub Gist - git-update.sh 使用chmod +x git-update.sh.&#x2F;git-update &lt;remote&gt; &lt;branch&gt;  作用更新当前目录下所有为Git仓库的子目录（目前不会递归遍历）。 脚本逻辑 遍历当前所有文件夹 过滤包含.git文件夹">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-12-06T20:07:58.000Z">
-<meta property="article:modified_time" content="2022-07-11T05:56:20.505Z">
+<meta property="article:published_time" content="2019-12-06T12:07:58.000Z">
+<meta property="article:modified_time" content="2022-07-11T06:48:36.460Z">
 <meta property="article:author" content="Zed">
 <meta property="article:tag" content="Git">
 <meta property="article:tag" content="Bash">
@@ -76,10 +76,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2022/01/01/%E5%A6%82%E4%BD%95%E5%9C%A8%E4%BD%BF%E7%94%A8SSH%E5%8D%8F%E8%AE%AE%E7%9A%84git%E6%93%8D%E4%BD%9C%E7%9A%84%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" href="/2021/12/31/f96df291ef4d/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2019/11/28/%E8%A7%A3%E5%86%B3IntelliJ%E4%B8%8B%E8%B0%83%E8%AF%95%E6%97%B6%E4%B8%8D%E7%94%9F%E6%88%90war-exploded%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E9%97%AE%E9%A2%98/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2019/11/28/c541370473db/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -92,16 +92,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/&text=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/&is_video=false&description=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=通过Bash脚本git-pull所有workspace下的本地仓库&body=Check out this article: https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/&name=通过Bash脚本git-pull所有workspace下的本地仓库&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.zedd.dev/2019/12/06/bdb865293971/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.zedd.dev/2019/12/06/bdb865293971/&text=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.zedd.dev/2019/12/06/bdb865293971/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.zedd.dev/2019/12/06/bdb865293971/&is_video=false&description=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=通过Bash脚本git-pull所有workspace下的本地仓库&body=Check out this article: https://www.zedd.dev/2019/12/06/bdb865293971/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.zedd.dev/2019/12/06/bdb865293971/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.zedd.dev/2019/12/06/bdb865293971/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.zedd.dev/2019/12/06/bdb865293971/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.zedd.dev/2019/12/06/bdb865293971/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.zedd.dev/2019/12/06/bdb865293971/&name=通过Bash脚本git-pull所有workspace下的本地仓库&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -125,11 +125,11 @@
 
     <div class="meta">
       <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">Zed's blogs</span>
+        <span itemprop="name">Zedd.dev</span>
       </span>
       
     <div class="postdate">
-        <time datetime="2019-12-06T20:07:58.000Z" itemprop="datePublished">2019-12-06</time>
+        <time datetime="2019-12-06T12:07:58.000Z" itemprop="datePublished">2019-12-06</time>
     </div>
 
 
@@ -201,16 +201,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/&text=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/&is_video=false&description=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=通过Bash脚本git-pull所有workspace下的本地仓库&body=Check out this article: https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.zedd.dev/2019/12/06/%E9%80%9A%E8%BF%87Bash%E8%84%9A%E6%9C%ACgit-pull%E6%89%80%E6%9C%89workspace%E4%B8%8B%E7%9A%84%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93/&name=通过Bash脚本git-pull所有workspace下的本地仓库&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://www.zedd.dev/2019/12/06/bdb865293971/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://www.zedd.dev/2019/12/06/bdb865293971/&text=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://www.zedd.dev/2019/12/06/bdb865293971/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://www.zedd.dev/2019/12/06/bdb865293971/&is_video=false&description=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=通过Bash脚本git-pull所有workspace下的本地仓库&body=Check out this article: https://www.zedd.dev/2019/12/06/bdb865293971/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://www.zedd.dev/2019/12/06/bdb865293971/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://www.zedd.dev/2019/12/06/bdb865293971/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://www.zedd.dev/2019/12/06/bdb865293971/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://www.zedd.dev/2019/12/06/bdb865293971/&title=通过Bash脚本git-pull所有workspace下的本地仓库"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://www.zedd.dev/2019/12/06/bdb865293971/&name=通过Bash脚本git-pull所有workspace下的本地仓库&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
