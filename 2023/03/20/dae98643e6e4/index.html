@@ -14,7 +14,7 @@
 <meta property="og:description" content="今天在使用Spring Boot Actuator的时候，遇到了一个让人头疼的问题。本来应该是可以正常启动的项目，一直在重启，查看日志发现了这样一个异常： Caused by: java.lang.NumberFormatException: For input string: &quot;tcp:&#x2F;&#x2F;10.43.20.83:80&quot;  仔细看了一下堆栈信息，发现是在org.springf">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-20T08:29:12.000Z">
-<meta property="article:modified_time" content="2023-03-20T08:33:48.125Z">
+<meta property="article:modified_time" content="2023-03-20T08:42:49.736Z">
 <meta property="article:author" content="Zed">
 <meta property="article:tag" content="devops">
 <meta name="twitter:card" content="summary">
@@ -154,12 +154,12 @@
 
 <p>仔细看了一下堆栈信息，发现是在<br><code>org.springframework.boot.actuate.autoconfigure.web.server.ManagementPortType.getPortProperty(ManagementPortType.java:64)</code>这个方法里抛出的。</p>
 <p>根据方法名，可以猜测这个异常和Actuator的管理端口有关。但是我很确定我的配置文件里没有问题，管理端口设置为8081：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">management.erver.port=8081</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">management.server.port=8081</span><br></pre></td></tr></table></figure>
 
 <p>为了找出问题所在，我又在k8s上跑了一个bash的pod，输出了一下环境变量，结果就发现了罪魁祸首：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SERVER_PORT=tcp://10.43.20.83:80</span><br></pre></td></tr></table></figure>
 
-<p>原来Spring Boot会用这个环境变量覆盖<code>management.port</code>的值²。而这个环境变量是k8s根据我的服务名字自动生成的。因为我有一个项目叫server，它有一个svc负责暴露负载均衡，svc也跟随项目叫server，k8s就会根据这个生成这个以svc名字+PORT命名的环境变量。</p>
+<p>原来Spring Boot会用这个环境变量覆盖<code>management.server.port</code>的值²。而这个环境变量是k8s根据我的服务名字自动生成的。因为我有一个项目叫server，它有一个svc负责暴露负载均衡，svc也跟随项目叫server，k8s就会根据这个生成这个以svc名字+PORT命名的环境变量。</p>
 <p>暂时删除svc server以后，项目就能正常启动了。</p>
 <p>临时的过渡方案会修改这个svc的名字。正式修改的话会连同整个项目去调整为别的名字。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过这次经历，我学到了几点：</p>
